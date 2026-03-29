@@ -1,10 +1,13 @@
-# Databricks notebook source
-# =============================================================================
-# utils/helpers.py
-# Shared helper functions used across Bronze, Silver, and Gold layers.
 # Usage in other notebooks:
 #   %run ../utils/helpers
-# =============================================================================
+
+"""
+============================================================================================
+                          -- DataBricks notenook --
+    This is a shared utility function used across Bronze, Silver and Gold layers
+Instructions: RUN 
+============================================================================================
+"""
 
 from pyspark.sql import functions
 from pyspark.sql import DataFrame
