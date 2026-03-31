@@ -6,8 +6,8 @@
 # =============================================================================
 
 # COMMAND ----------
-
-%run ../utils/pipeline_utils
+#run only in databricks
+#%run ../utils/pipeline_utils
 
 # COMMAND ----------
 # TITLE: 1. Read from Bronze
