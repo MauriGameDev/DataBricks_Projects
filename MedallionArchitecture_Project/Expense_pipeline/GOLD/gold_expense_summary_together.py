@@ -5,11 +5,11 @@
 # applies aggregations, and writes to one combined Gold table.
 # =============================================================================
 
-# COMMAND ----------
 
-%run ../utils/pipeline_utils
 
-# COMMAND ----------
+#%run ../utils/pipeline_utils
+
+
 # TITLE: 1. Read from Silver
 
 df_silver_2024 = spark.table(SILVER_2024)
@@ -18,19 +18,19 @@ df_silver_2025 = spark.table(SILVER_2025)
 print(f"Silver 2024 rows : {df_silver_2024.count()}")
 print(f"Silver 2025 rows : {df_silver_2025.count()}")
 
-# COMMAND ----------
+
 # TITLE: 2. Union 2024 + 2025
 
 df_combined = df_silver_2024.unionByName(df_silver_2025)
 
 print(f"Combined rows    : {df_combined.count()}")
 
-# COMMAND ----------
+
 # TITLE: 3. Preview Combined
 
 display(df_combined.limit(10))
 
-# COMMAND ----------
+
 # TITLE: 4. Define build_gold() Aggregation
 
 from pyspark.sql import functions
@@ -101,22 +101,22 @@ def build_gold(df: DataFrame) -> DataFrame:
 
     return df_gold
 
-# COMMAND ----------
+
 # TITLE: 5. Apply Aggregations
 
 df_gold = build_gold(df_combined)
 
-# COMMAND ----------
+
 # TITLE: 6. Preview Gold
 
 display(df_gold.orderBy("report_year", "Category"))
 
-# COMMAND ----------
+
 # TITLE: 7. Write to Gold Delta Table
 
 write_delta(df_gold, GOLD_TABLE)
 
-# COMMAND ----------
+
 # TITLE: 8. Verify
 
 verify_table(GOLD_TABLE)
