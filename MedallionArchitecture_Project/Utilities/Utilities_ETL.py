@@ -17,6 +17,9 @@ from pyspark.sql import DataFrame
 
 CATALOG     = "cosmicfire_dev_dbx"
 SCHEMA      = "default"
+BRONZE_SCHEMA = "bronze"
+SILVER_SCHEMA = "silver"
+GOLD_SCHEMA   = "gold"
 VOLUME_PATH = f"/Volumes/{CATALOG}/{SCHEMA}/expenses/raw"
 
 # File paths
