@@ -1,20 +1,15 @@
-# Usage in other notebooks:
-#   %run ../utils/helpers
+#|=================================  DataBricks NoteBook =========================================|
+#|                                                                                                |
+#|          This is a shared utility function used across Bronze, Silver and Gold layers          |
+#|                                  Instructions: RUN                                             |
+#|%run../Utilities/utilities_ETL -> runs variables and functions from the utilities notebook      |
+#|================================================================================================|
 
-"""
-============================================================================================
-                          -- DataBricks notenook --
-    This is a shared utility function used across Bronze, Silver and Gold layers
-Instructions: RUN 
-============================================================================================
-"""
-
+#Import Libraries 
 from pyspark.sql import functions
 from pyspark.sql import DataFrame
 
-# COMMAND ----------
-# TITLE: Catalog & Volume Config (Single Source of Truth)
-
+# Catalog & Volume Config 
 CATALOG     = "cosmicfire_dev_dbx"
 SCHEMA      = "default"
 BRONZE_SCHEMA = "bronze"
@@ -42,14 +37,17 @@ GOLD_SPEND_BY_MONTH        = f"{CATALOG}.{GOLD_SCHEMA}.gold_spend_by_month"
 GOLD_TOTAL_SPEND_BY_YEAR   = f"{CATALOG}.{GOLD_SCHEMA}.gold_total_spend_by_year"
 GOLD_TOP_SPENDING_CATEGORY = f"{CATALOG}.{GOLD_SCHEMA}.gold_top_spending_category"
 
+# Print to the screen to verify its loaded
 print("✓ helpers.py loaded")
 print(f"  Catalog     : {CATALOG}")
 print(f"  Schema      : {SCHEMA}")
+print(f"  Bronze      : {BRONZE_SCHEMA}")
+print(f"  Silver      : {SILVER_SCHEMA}")
+print(f"  Gold        : {GOLD_SCHEMA}")
 print(f"  Volume path : {VOLUME_PATH}")
 
-# COMMAND ----------
-# TITLE: read_csv()
-
+#FUNCTIONS----------------------------------------------------------------------
+# Read CSV file function 
 def read_csv(path: str, year: int) -> DataFrame:
     """
     Read a CSV from a Databricks Volume into a Spark DataFrame.
@@ -69,9 +67,7 @@ def read_csv(path: str, year: int) -> DataFrame:
         .withColumn("ingestion_timestamp", functions.current_timestamp())
     )
 
-# COMMAND ----------
-# TITLE: write_delta()
-
+# Write to Delta Table function()
 def write_delta(df: DataFrame, table_name: str, mode: str = "overwrite") -> None:
     """
     Write a Spark DataFrame to a Delta table.
@@ -90,9 +86,7 @@ def write_delta(df: DataFrame, table_name: str, mode: str = "overwrite") -> None
     count = spark.table(table_name).count()
     print(f"✓ Written to {table_name} — {count} rows")
 
-# COMMAND ----------
-# TITLE: verify_table()
-
+#  Verify Table Function
 def verify_table(table_name: str, rows: int = 5) -> None:
     """
     Print row count and display a sample from a Delta table.

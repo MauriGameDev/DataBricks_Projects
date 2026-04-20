@@ -1,14 +1,11 @@
-# Databricks notebook source
-# |============================================================================|
+# +=========================   Databricks Notebook  ===========================+
 # |                              Silver Layer                                  |
 # |       Reads from Bronze Delta tables, applies cleaning transformations,    |
 # |          and writes to Silver Delta tables. One table per year.            |
-# =============================================================================|
-# Instructions: RUN utilities_ETF first!!
+# |                # Instructions: RUN utilities_ETF first!!                   |
+# +============================================================================+
 
-
-#run only in databricks
-#%run ../utils/pipeline_utils
+#run only in databricks -> %run ../utils/pipeline_utils
 
 #import libraries
 from pyspark.sql import DataFrame

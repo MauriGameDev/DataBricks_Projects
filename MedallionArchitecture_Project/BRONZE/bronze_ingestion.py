@@ -1,15 +1,11 @@
-#|==========================   DataBricks  ====================================|
+#+==========================   DataBricks  ====================================+
 #|                            Bronze Layer                                     |
 #|       Ingest raw CSV files from the Volume into Bronze Delta tables.        |
 #|                  One table per year MetaData Added                          |
 #|            (Ingestion timestamp and source file location).                  |
-#|=============================================================================|
+#+=============================================================================+
 
-#%run ../Utilities/utilities_ETL
-
-# Load Pipeline Utilities
-# RUN Configuration code from -> config/ETL_config
-
+#Run in DataBricks ONLY! -> %run ../Utilities/utilities_ETL
 
 # Read CSVs from Volume
 df_2024 = read_csv(FILE_2024, 2024)

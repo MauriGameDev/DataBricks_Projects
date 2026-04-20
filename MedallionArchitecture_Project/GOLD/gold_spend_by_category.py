@@ -1,13 +1,11 @@
-# Databricks notebook source
-# =============================================================================
-# gold/gold_expense_summary.py
-# Reads from Silver Delta tables, applies aggregations,
-# and writes to Gold Delta tables. One table per year.
-# =============================================================================
+# +=========================   Databricks Notebook  ===========================+
+# |                    Gold Layer - gold_spend_by_category                     |
+# |       Reads from Silver Delta tables, applies aggregations, and writes     |
+# |               to Gold Delta tables. One table per year.                    |
+# |                # Instructions: RUN utilities_ETF first!!                   |
+# +============================================================================+
 
-
-
-#%run ../utils/pipeline_utils
+# %run ../utils/pipeline_utils
 
 from pyspark.sql import functions
 from pyspark.sql import DataFrame
@@ -51,13 +49,13 @@ def build_gold(df: DataFrame) -> DataFrame:
     df_by_vendor = (
         df.groupBy("Vendor")
         .agg(
-            functions.round(functions.sum("TotalCost"), 2).alias("TotalSpendByVendor")
+            functions.round(functions.sum("totalCost"), 2).alias("totalSpendByVendor")
         )
     )
 
     # 3. Total spend by Month
     df_by_month = (
-        df.withColumn("Month", functions.date_format(functions.col("Date"), "yyyy-MM"))
+        df.withColumn("month", functions.date_format(functions.col("Date"), "yyyy-MM"))
         .groupBy("Month")
         .agg(
             functions.round(functions.sum("TotalCost"), 2).alias("TotalSpendByMonth")
