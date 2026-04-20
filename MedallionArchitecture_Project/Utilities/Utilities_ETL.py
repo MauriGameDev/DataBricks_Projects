@@ -27,12 +27,12 @@ FILE_2024   = f"{VOLUME_PATH}/ExpenseReport_2024.csv"
 FILE_2025   = f"{VOLUME_PATH}/ExpenseReport_2025.csv"
 
 # Table names — Bronze
-BRONZE_2024 = f"{CATALOG}.{SCHEMA}.bronze_expenses_2024"
-BRONZE_2025 = f"{CATALOG}.{SCHEMA}.bronze_expenses_2025"
+BRONZE_2024 = f"{CATALOG}.{BRONZE_SCHEMA}.expenses_2024"
+BRONZE_2025 = f"{CATALOG}.{BRONZE_SCHEMA}.expenses_2025"
 
 # Table names — Silver
-SILVER_2024 = f"{CATALOG}.{SCHEMA}.silver_expenses_2024"
-SILVER_2025 = f"{CATALOG}.{SCHEMA}.silver_expenses_2025"
+SILVER_2024 = f"{CATALOG}.{SILVER_SCHEMA}.expenses_2024"
+SILVER_2025 = f"{CATALOG}.{SILVER_SCHEMA}.expenses_2025"
 
 # Table names — Gold
 GOLD_TABLE  = f"{CATALOG}.{SCHEMA}.gold_expense_summary"
