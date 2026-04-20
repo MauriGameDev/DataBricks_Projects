@@ -34,8 +34,13 @@ BRONZE_2025 = f"{CATALOG}.{BRONZE_SCHEMA}.expenses_2025"
 SILVER_2024 = f"{CATALOG}.{SILVER_SCHEMA}.expenses_2024"
 SILVER_2025 = f"{CATALOG}.{SILVER_SCHEMA}.expenses_2025"
 
-# Table names — Gold
-GOLD_TABLE  = f"{CATALOG}.{SCHEMA}.gold_expense_summary"
+
+# Table Names - GOLD
+GOLD_SPEND_BY_CATEGORY     = f"{CATALOG}.{GOLD_SCHEMA}.gold_spend_by_category"
+GOLD_SPEND_BY_VENDOR       = f"{CATALOG}.{GOLD_SCHEMA}.gold_spend_by_vendor"
+GOLD_SPEND_BY_MONTH        = f"{CATALOG}.{GOLD_SCHEMA}.gold_spend_by_month"
+GOLD_TOTAL_SPEND_BY_YEAR   = f"{CATALOG}.{GOLD_SCHEMA}.gold_total_spend_by_year"
+GOLD_TOP_SPENDING_CATEGORY = f"{CATALOG}.{GOLD_SCHEMA}.gold_top_spending_category"
 
 print("✓ helpers.py loaded")
 print(f"  Catalog     : {CATALOG}")
