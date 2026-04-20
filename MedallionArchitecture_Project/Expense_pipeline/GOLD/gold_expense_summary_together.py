@@ -7,7 +7,7 @@
 
 # COMMAND ----------
 
-%run ../utils/pipeline_utils
+#%run ../utils/pipeline_utils
 
 # COMMAND ----------
 # TITLE: 1. Read from Silver

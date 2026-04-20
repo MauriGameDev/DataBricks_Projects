@@ -84,33 +84,23 @@ def clean_expenses(df: DataFrame) -> DataFrame:
 
     return df
 
-# COMMAND ----------
-# TITLE: 3. Apply Transformations
-
+# Apply Transformations
 df_silver_2024 = clean_expenses(df_bronze_2024)
 df_silver_2025 = clean_expenses(df_bronze_2025)
 
 print(f"Silver 2024 rows : {df_silver_2024.count()}")
 print(f"Silver 2025 rows : {df_silver_2025.count()}")
 
-# COMMAND ----------
-# TITLE: 4. Preview — 2024
-
+# Preview — 2024
 display(df_silver_2024.limit(10))
 
-# COMMAND ----------
-# TITLE: 5. Preview — 2025
-
+# Preview — 2025
 display(df_silver_2025.limit(10))
 
-# COMMAND ----------
-# TITLE: 6. Write to Silver Delta Tables
-
+#Write to Silver Delta Tables
 write_delta(df_silver_2024, SILVER_2024)
 write_delta(df_silver_2025, SILVER_2025)
 
-# COMMAND ----------
-# TITLE: 7. Verify
-
+#  Verify Silver tables
 verify_table(SILVER_2024)
 verify_table(SILVER_2025)
